@@ -288,14 +288,14 @@ const LandingNavbar = ({compressed}: IProps) => {
                         className={classes.link} 
                         {...buttonProps}
                     >
-                        Donate
+                        Courses
                     </Button>
                     <Button 
                         onClick={() => handleNavigation('/campaigns')} 
                         className={classes.link} 
                         {...buttonProps}
                     >
-                        Campaigns
+                        Gallery
                     </Button>
                     <Button 
                         onClick={() => handleNavigation('/create-campaign')} 
