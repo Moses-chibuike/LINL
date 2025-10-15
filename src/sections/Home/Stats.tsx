@@ -3,25 +3,29 @@ import {TitleBadge} from "../../components";
 
 const mockData = [
     {
-        amount: '5B',
-        description: 'We have raised an impressive amounts of funds. Help use continue to grow and reach our ultimate goal.'
+        amount: '5',
+        label: 'Years Experience',
+        description: 'Alpha Deutsch is a registered company with about 8+ working experience'
     },
     {
-        amount: '15K',
-        description: 'Over 12K campaigns are funded. Join us and be a part of our success story.'
+        amount: '10',
+        label: 'Staff',
+        description: 'We have a team of workforce that are everly ready to handle any task given to them'
     },
     {
-        amount: '700',
-        description: 'We have more than 700 active campaigns. Help us continue to made vision into reality.'
+        amount: '200',
+        label: 'Successful stories',
+        description: 'We have trained lots of students and watch them become a better ambassador of Alpha Deutsch'
     }
 ]
 
 interface IStatsProps extends PaperProps {
     amount: string
+    label: string
     description: string
 }
 
-function Stats({amount, description}: IStatsProps) {
+function Stats({amount, label, description}: IStatsProps) {
     return (
         <Paper
             p="md"
@@ -30,10 +34,12 @@ function Stats({amount, description}: IStatsProps) {
             sx={{
                 backdropFilter: `blur(16px) saturate(180%)`,
                 backgroundColor: `rgba(255, 255, 255, 0.75)`,
-                border: `1px solid rgba(209, 213, 219, 0.3)`
+                border: `1px solid rgba(209, 213, 219, 0.3)`,
+                textAlign: 'center'
             }}>
-            <Title size={36} mb="md">{amount}+</Title>
-            <Text size="sm">{description}</Text>
+            <Title size={48} weight={700} color="#f2b518" mb="xs">{amount}+</Title>
+            <Title order={4} weight={700} mb="md">{label}</Title>
+            <Text size="sm" color="dimmed">{description}</Text>
         </Paper>
     )
 }
@@ -45,21 +51,20 @@ interface IProps {
 }
 
 const StatsSection = ({boxProps, subtitleProps, titleProps}: IProps) => {
-    const items = mockData.map((item) => <Stats {...item} key={item.description}/>)
+    const items = mockData.map((item) => <Stats {...item} key={item.label}/>)
 
     return (
         <Box {...boxProps}>
             <Box mb="lg">
-                <TitleBadge title="make a difference"/>
-                <Title {...titleProps}>large pool potential investor</Title>
-                <Text {...subtitleProps}>With our crowdfunding platform, you can support the projects and causes you
-                    care about most</Text>
+                <TitleBadge title="what we offer"/>
+                <Title {...titleProps}>We have everything you need to know</Title>
+                <Text {...subtitleProps}>Language Integration Nigeria Limited is a Nigerian-based German language and Culture learning center. We promote knowledge of the German language in Nigeria and foster international cultural cooperation.</Text>
             </Box>
             <SimpleGrid
                 cols={3}
                 spacing="lg"
                 breakpoints={[
-                    {maxWidth: 'md', cols: 3, spacing: 'md'},
+                    {maxWidth: 'md', cols: 2, spacing: 'md'},
                     {maxWidth: 'sm', cols: 1, spacing: 'sm'},
                 ]}
             >

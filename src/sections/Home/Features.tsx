@@ -14,14 +14,30 @@ import {
     TitleProps
 } from '@mantine/core';
 import {TitleBadge} from "../../components";
+import {Link} from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
     feature: {
         padding: theme.spacing.lg,
         backdropFilter: `blur(16px) saturate(180%)`,
         backgroundColor: `rgba(255, 255, 255, 0.75)`,
-        border: `1px solid rgba(209, 213, 219, 0.3)`
+        border: `1px solid rgba(209, 213, 219, 0.3)`,
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        
+        '&:hover': {
+            transform: 'translateY(-4px)',
+            boxShadow: theme.shadows.lg,
+        }
     },
+    
+    actionButton: {
+        backgroundColor: '#f2b518',
+        color: theme.white,
+        
+        '&:hover': {
+            backgroundColor: '#d9a315',
+        }
+    }
 }));
 
 interface FeatureProps extends PaperProps {
@@ -29,52 +45,65 @@ interface FeatureProps extends PaperProps {
     title: string;
     description: string;
     action: string;
+    link: string;
 }
 
 const mockdata = [
     {
-        image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Entrepreneurs',
+        image: 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3',
+        title: 'Spanish Language Courses',
         description:
-            'Empowering growth by providing tools and resources to help entrepreneurs turn ideas into impactful realities.',
-        action: `Donate`
+            'Master Spanish with our comprehensive courses covering all proficiency levels. Perfect for travel, business, or DELE certification preparation.',
+        action: 'Enrol Now',
+        link: '/courses/spanish'
     },
     {
-        image: 'https://images.unsplash.com/photo-1497655392221-e645087843da?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Orphans',
+        image: 'https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=821',
+        title: 'German Language Courses',
         description:
-            `Restoring hope by giving orphans access to education, mentorship, and a nurturing environment to rewrite their stories.
-`,
-        action: 'Donate'
+            'Learn German from beginner to advanced levels. Prepare for Goethe-Zertifikat exams and unlock opportunities in German-speaking countries.',
+        action: 'Enrol Now',
+        link: '/courses/german'
     },
     {
-        image: 'https://images.unsplash.com/photo-1487546331507-fcf8a5d27ab3?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'Single Mothers',
+        image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3',
+        title: 'French Language Courses',
         description:
-            `Helping single mothers overcome challenges with tailored relief and opportunities.`,
-        action: 'Donate'
+            'Discover the beauty of French language and culture. From basics to DELF/DALF preparation, we guide you every step of the way.',
+        action: 'Enrol Now',
+        link: '/courses/french'
     },
     {
-        image: 'https://images.unsplash.com/photo-1473649085228-583485e6e4d7?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        title: 'School Children',
+        image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870',
+        title: 'Chinese Language Courses',
         description:
-            `Equipping school children with the resources they need to succeed and dream big.`,
-        action: 'Donate'
+            'Explore the richness of Mandarin Chinese. Master spoken and written language with our structured curriculum designed for all proficiency levels.',
+        action: 'Enrol Now',
+        link: '/courses/chinese'
     },
 ];
 
-function Feature({image, title, description, action}: FeatureProps) {
+function Feature({image, title, description, action, link}: FeatureProps) {
     const {classes, cx} = useStyles();
 
     return (
-        <Card className={cx(classes.feature, 'card')} shadow="md" radius="sm">
+        <Card className={cx(classes.feature, 'card')} shadow="md" radius="md">
             <Card.Section>
                 <Image src={image} height={240} fit="cover"/>
             </Card.Section>
             <Stack spacing="sm" mt="md">
-                <Title order={4}>{title}</Title>
-                <Text size="sm">{description}</Text>
-                <Button variant="subtle" color="secondary">{action}</Button>
+                <Title order={4} weight={700}>{title}</Title>
+                <Text size="sm" color="dimmed" style={{ minHeight: '60px' }}>
+                    {description}
+                </Text>
+                <Button 
+                    className={classes.actionButton}
+                    component={Link} 
+                    to={link}
+                    fullWidth
+                >
+                    {action}
+                </Button>
             </Stack>
         </Card>
     );
@@ -92,10 +121,10 @@ const FeaturesSection = ({boxProps, subtitleProps}: IProps) => {
     return (
         <Box {...boxProps}>
             <Box mb="lg">
-                <TitleBadge title="who we help"/>
-                <Text {...subtitleProps}>Transforming Lives, One Story at a Time</Text>
+                <TitleBadge title="what we offer"/>
+                <Text {...subtitleProps}>Comprehensive Language Learning Programs</Text>
             </Box>
-            <SimpleGrid cols={2} spacing="lg" breakpoints={[{maxWidth: 'md', cols: 2, spacing: 'sm'}]} >
+            <SimpleGrid cols={2} spacing="lg" breakpoints={[{maxWidth: 'md', cols: 2, spacing: 'sm'}, {maxWidth: 'sm', cols: 1, spacing: 'sm'}]}>
                 {items}
             </SimpleGrid>
         </Box>

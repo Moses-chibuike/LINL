@@ -1,4 +1,4 @@
-import {Box, BoxProps, Container, Flex, Select, SimpleGrid, Stack, TextInput, Title, TitleProps} from "@mantine/core";
+import {Box, BoxProps, Container, Flex, Select, SimpleGrid, Stack, TextInput, Title, TitleProps, Text} from "@mantine/core";
 import campaignsData from "../data/Campaigns.json";
 import {CampaignCard} from "../components";
 import {Helmet} from "react-helmet";
@@ -32,7 +32,10 @@ const CampaignsPage = (): JSX.Element => {
                 <Container size="lg">
                     <Stack spacing={matchesMobile ? "md" : "xl"}>
                         <Box {...boxProps}>
-                            <Title {...titleProps} align="center">Discover campaigns to fund</Title>
+                            <Title {...titleProps} align="center">Gallery</Title>
+                            <Text align="center" size="sm" color="dimmed" mt="md" maw={600} sx={{margin: '0 auto'}}>
+                                Explore our collection of meaningful projects and initiatives. Discover the stories, impact, and communities behind each campaign.
+                            </Text>
                         </Box>
                         <Flex
                             justify="space-between"

@@ -35,35 +35,41 @@ const HomePage = (): JSX.Element => {
     return (
         <>
             <Helmet>
-                <title>Home</title>
+                <title>Language Integration Nigeria Limited - Learn Spanish, German & French</title>
             </Helmet>
             <Box>
                 <HeroSection/>
                 <Container>
                     <Box {...boxProps}>
                         <TitleBadge title="About us"/>
-                        <Title {...titleProps}>We are an independent NGO</Title>
+                        <Title {...titleProps}>Your Gateway to Global Languages</Title>
                         <Text
-  {...subTitleProps}
-  style={{ color: '#6c757d' }} // Mid-gray color from the Bootstrap palette or use Mantine gray scale
->
-AlaoMeHelp is an independent NGO with a simple but powerful mission: to transform lives by investing in resilience, courage, and untapped potential. AlaoMeHelp is an Extension of AlaoMe Transformation Inspired by the personal journey of its founder, Oluseyi IfeanyiChukwu Alao, AlaoMeHelp exists to ensure that no story of hope and perseverance goes unheard or unsupported.
+                            {...subTitleProps}
+                            style={{ color: '#6c757d' }}
+                        >
+                            Language Integration Nigeria Limited is a premier language training institution dedicated to breaking down language barriers and connecting Nigerians to global opportunities. We specialize in teaching Spanish, German, and French—three of the world's most influential languages that open doors to international education, career advancement, and cultural enrichment.
 
-Oluseyi’s life has been a testament to the strength of the human spirit. After losing his mother at the age of 10, he faced unimaginable pain but turned it into a purpose-driven life. His experiences led to the creation of the AlaoMe Transformation Program, which has already impacted countless individuals by helping them discover faith, master their mindset, and find purpose. Building on this foundation, AlaoMeHelp was born to create even greater impact by reaching the vulnerable and resilient in our communities.
+                            Founded with a vision to empower individuals through language mastery, Language Integration Nigeria Limited combines expert instruction with innovative teaching methods. Our experienced native and certified instructors bring authentic cultural insights and proven pedagogical approaches to every lesson, ensuring you don't just learn a language—you live it.
 
-AlaoMeHelp stands for:
+                            At Language Integration Nigeria Limited, we believe language learning is more than grammar and vocabulary. It's about:
 
-Orphans who refuse to let their circumstances define them.
+                            Building bridges to international opportunities in education and career development.
 
-Single mothers working tirelessly to give their children a better future.
+                            Connecting cultures through authentic communication and understanding.
 
-Innovators and Entrepreneurs who have ideas that could change their communities and the world.
+                            Empowering individuals to confidently navigate global environments.
 
-At AlaoMeHelp, every contribution makes a difference. It’s not just about offering support—it’s about creating opportunities, empowering communities, and rewriting futures. Together, we transform resilience into hope and challenges into triumphs.
+                            Creating pathways to study abroad programs, international certifications, and career advancement.
 
-Join us in this journey. Your support helps build brighter futures, one story at a time. Let’s create a world where no one has to walk their path alone…..
+                            Whether you're preparing for international exams (DELE, DELF, Goethe-Zertifikat), planning to study or work abroad, or simply passionate about learning new languages, Language Integration Nigeria Limited provides the comprehensive training and support you need to succeed.
 
-</Text>       </Box>
+                            Our courses are designed for all levels—from absolute beginners to advanced learners—with flexible scheduling options including weekday, weekend, and intensive programs. We offer both in-person classes and online learning to accommodate your lifestyle.
+
+                            Join thousands of successful students who have transformed their futures through language proficiency. At Language Integration Nigeria Limited, we're not just teaching languages—we're building global citizens, one conversation at a time.
+
+                            Start your language journey today and unlock a world of possibilities!
+                        </Text>
+                    </Box>
                     <FeaturesSection boxProps={boxProps} subtitleProps={subTitleProps}/>
                     <StatsSection boxProps={boxProps} titleProps={titleProps} subtitleProps={subTitleProps}/>
                     <JoinUsSection boxProps={boxProps} titleProps={titleProps} subtitleProps={subTitleProps}/>

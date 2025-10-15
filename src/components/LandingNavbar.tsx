@@ -247,10 +247,10 @@ const LandingNavbar = ({compressed}: IProps) => {
                         <BrandName size={28} asLink/>
                         <Flex align="center" gap="xs" sx={{height: '100%'}} className={classes.hiddenMobile}>
                             <Button component={Link} to="/how-it-works" className={classes.link} {...buttonProps}>
-                                Donate
+                                Courses
                             </Button>
                             <Button component={Link} to="/campaigns" className={classes.link} {...buttonProps}>
-                                Campaigns
+                                Gallery
                             </Button>
                             <Button component={Link} to="/create-campaign" className={classes.link} {...buttonProps}>
                                 Contact Us

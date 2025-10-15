@@ -2,12 +2,10 @@ import {
     Badge,
     Card,
     createStyles,
-    Flex,
     getStylesRef,
     Group,
     Image,
     PaperProps,
-    Progress,
     Stack,
     Text,
 } from '@mantine/core';
@@ -55,9 +53,7 @@ const CampaignCard = ({data, showActions}: IProps) => {
         mainImage,
         id,
         title,
-        amountRaised,
         daysLeft,
-        contributors,
         description,
         category,
         country
@@ -82,15 +78,6 @@ const CampaignCard = ({data, showActions}: IProps) => {
                     </Group>
 
                     {showActions && <Text lineClamp={3} size="sm">{description}</Text>}
-
-                    <Progress value={daysLeft}/>
-
-                    <Flex justify="space-between">
-                        <Text><b>{amountRaised}</b> raised</Text>
-                        <Text><b>{contributors}</b> donations</Text>
-                    </Flex>
-
-                    {/*{showActions && <Button>Donate Now</Button>}*/}
                 </Stack>
             </Card.Section>
         </Card>

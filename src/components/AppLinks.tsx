@@ -47,8 +47,8 @@ const useStyles = createStyles((theme) => ({
 
 const data = [
     {link: '/', label: 'Home'},
-    {link: '/how-it-works', label: 'Donate'},
-    {link: '/campaigns', label: 'Campaigns'},
+    {link: '/how-it-works', label: 'Courses'},
+    {link: '/campaigns', label: 'Gallery'},
     {link: '/create-campaign', label: 'Contact Us'},
     {link: '/dashboard', label: 'Team Members'},
    

@@ -1,40 +1,40 @@
-import {createStyles, rem, Text, Title, TitleProps, UnstyledButton} from "@mantine/core";
+import {createStyles, rem, TitleProps, UnstyledButton, Box} from "@mantine/core";
 import {Link} from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
-    title: {
-        textAlign: 'center',
-        fontWeight: 900,
-        letterSpacing: -1,
-        color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-
-        [theme.fn.smallerThan('md')]: {
-            fontWeight: 700,
-        },
-
+    logoContainer: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        
         [theme.fn.smallerThan('sm')]: {
-            fontSize: rem(24),
-            textAlign: 'left',
+            justifyContent: 'flex-start',
         },
     },
 
-    highlight: {
-        color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
-    },
-
-    white: {
-        textAlign: 'center',
-        fontWeight: 800,
-        letterSpacing: -1,
-        color: theme.colors.gray[0],
+    logo: {
+        height: rem(60),
+        width: 'auto',
 
         [theme.fn.smallerThan('md')]: {
-            fontWeight: 700,
+            height: rem(50),
         },
 
         [theme.fn.smallerThan('sm')]: {
-            fontSize: rem(24),
-            textAlign: 'left',
+            height: rem(45),
+        },
+    },
+
+    logoWhite: {
+        height: rem(60),
+        width: 'auto',
+        filter: 'brightness(0) invert(1)', // Makes the logo white for grayscale variant
+
+        [theme.fn.smallerThan('md')]: {
+            height: rem(50),
+        },
+
+        [theme.fn.smallerThan('sm')]: {
+            height: rem(45),
         },
     }
 }))
@@ -47,22 +47,27 @@ interface IProps extends TitleProps {
 const Brand = ({asLink, variant, ...others}: IProps) => {
     const {classes} = useStyles();
 
+    const logoSrc = "/lan.svg";
+    const logoClass = variant === 'grayscale' ? classes.logoWhite : classes.logo;
+
     return (
         asLink ?
             <UnstyledButton component={Link} to="/">
-                <Title className={variant === 'grayscale' ? classes.white : classes.title} {...others}>
-                    AlaoMe
-                    <Text component="span" className={variant === 'grayscale' ? '' : classes.highlight} inherit>
-                        Help
-                    </Text>
-                </Title>
+                <Box className={classes.logoContainer}>
+                    <img 
+                        src={logoSrc} 
+                        alt="Language Learning Logo" 
+                        className={logoClass}
+                    />
+                </Box>
             </UnstyledButton> :
-            <Title className={classes.title} {...others}>
-                AlaoMe
-                <Text component="span" className={classes.highlight} inherit>
-                    Help
-                </Text>
-            </Title>
+            <Box className={classes.logoContainer}>
+                <img 
+                    src={logoSrc} 
+                    alt="Language Learning Logo" 
+                    className={logoClass}
+                />
+            </Box>
     );
 };
 

@@ -22,9 +22,11 @@ const useStyles = createStyles((theme) => ({
         backdropFilter: `blur(16px) saturate(180%)`,
         backgroundColor: `rgba(255, 255, 255, 0.75)`,
         border: `none`,
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
 
         '&:hover': {
-            backgroundColor: theme.colors.secondary[2]
+            transform: 'translateY(-4px)',
+            boxShadow: theme.shadows.lg,
         }
     },
 }));
@@ -35,7 +37,7 @@ interface IProps {
     subtitleProps?: TextProps
 }
 
-const WaysToFundSection = ({boxProps, subtitleProps}: IProps) => {
+const WaysToLearnSection = ({boxProps, subtitleProps, titleProps}: IProps) => {
     const {classes, cx, theme} = useStyles();
 
     return (
@@ -44,9 +46,9 @@ const WaysToFundSection = ({boxProps, subtitleProps}: IProps) => {
                 <Grid>
                     <Grid.Col lg={4}>
                         <Stack spacing="xs" justify="center" sx={{height: '100%'}}>
-                            <TitleBadge title="Make your impact"/>
-                            <Title order={3}>AlaoMeHelp Gives You More</Title>
-                            <Text>AlaoMeHelp bridges the gap between generosity and transformation. Our mission is to empower lives, rewrite stories, and create opportunities for brighter futures.</Text>
+                            <TitleBadge title="Learning Pathways"/>
+                            <Title {...titleProps} order={4}>Choose Your Learning Journey</Title>
+                            <Text size="sm" {...subtitleProps}>Flexible learning options tailored to your needs.</Text>
                         </Stack>
                     </Grid.Col>
                     <Grid.Col lg={8}>
@@ -56,39 +58,48 @@ const WaysToFundSection = ({boxProps, subtitleProps}: IProps) => {
                                 shadow="md"
                                 radius="sm"
                                 component={Link}
-                                to="/create-campaign"
+                                to="/courses"
                             >
                                 <Card.Section>
                                     <Image
-                                        src="https://images.unsplash.com/photo-1518101645466-7795885ff8f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
+                                        src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                                        height={200}
+                                        fit="cover"
+                                    />
                                 </Card.Section>
-                                <Text mt="md" align="center" {...subtitleProps}>Yourself</Text>
+                                <Text mt="md" align="center" weight={600} color="dark" {...subtitleProps}>Group Classes</Text>
                             </Card>
                             <Card
                                 className={cx(classes.feature, 'card')}
                                 shadow="md"
                                 radius="sm"
                                 component={Link}
-                                to="/create-campaign"
+                                to="/courses"
                             >
                                 <Card.Section>
                                     <Image
-                                        src="https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
+                                        src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                                        height={200}
+                                        fit="cover"
+                                    />
                                 </Card.Section>
-                                <Text mt="md" align="center" {...subtitleProps}>Friends & Family</Text>
+                                <Text mt="md" align="center" weight={600} color="dark" {...subtitleProps}>Private Tutoring</Text>
                             </Card>
                             <Card
                                 className={cx(classes.feature, 'card')}
                                 shadow="md"
                                 radius="sm"
                                 component={Link}
-                                to="/create-campaign"
+                                to="/courses"
                             >
                                 <Card.Section>
                                     <Image
-                                        src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"/>
+                                        src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                                        height={200}
+                                        fit="cover"
+                                    />
                                 </Card.Section>
-                                <Text mt="md" align="center" {...subtitleProps}>Charity</Text>
+                                <Text mt="md" align="center" weight={600} color="dark" {...subtitleProps}>Online Learning</Text>
                             </Card>
                         </SimpleGrid>
                     </Grid.Col>
@@ -98,4 +109,4 @@ const WaysToFundSection = ({boxProps, subtitleProps}: IProps) => {
     );
 };
 
-export default WaysToFundSection;
+export default WaysToLearnSection;
