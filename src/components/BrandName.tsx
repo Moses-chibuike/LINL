@@ -42,7 +42,7 @@ const Brand = ({asLink, variant, ...others}: IProps) => {
   const {classes} = useStyles();
   const [imageError, setImageError] = useState(false);
 
-  const logoSrc = (import.meta.env.BASE_URL || "/") + "lan.svg";
+  const logoSrc = (import.meta.env.BASE_URL || "/") + "Lan.svg";
   const logoClass = variant === 'grayscale' ? classes.logoWhite : classes.logo;
 
   const handleImageError = () => {
