@@ -1,5 +1,7 @@
 import {createStyles, rem, TitleProps, UnstyledButton, Box} from "@mantine/core";
 import {Link} from "react-router-dom";
+import { useState } from "react";
+import lanLogo from '../assets/lan.svg';
 
 const useStyles = createStyles((theme) => ({
     logoContainer: {
@@ -27,7 +29,7 @@ const useStyles = createStyles((theme) => ({
     logoWhite: {
         height: rem(45),
         width: 'auto',
-        filter: 'brightness(0) invert(1)', // Makes the logo white for grayscale variant
+        filter: 'brightness(0) invert(1)',
 
         [theme.fn.smallerThan('md')]: {
             height: rem(38),
@@ -46,27 +48,38 @@ interface IProps extends TitleProps {
 
 const Brand = ({asLink, variant, ...others}: IProps) => {
     const {classes} = useStyles();
+    const [imageError, setImageError] = useState(false);
 
-    const logoSrc = "/lan.svg";
     const logoClass = variant === 'grayscale' ? classes.logoWhite : classes.logo;
+
+    const handleImageError = () => {
+        setImageError(true);
+        console.error('Logo image failed to load');
+    };
 
     return (
         asLink ?
             <UnstyledButton component={Link} to="/">
                 <Box className={classes.logoContainer}>
-                    <img 
-                        src={logoSrc} 
-                        alt="Language Learning Logo" 
-                        className={logoClass}
-                    />
+                    {!imageError && (
+                        <img 
+                            src={lanLogo}
+                            alt="Language Learning Logo" 
+                            className={logoClass}
+                            onError={handleImageError}
+                        />
+                    )}
                 </Box>
             </UnstyledButton> :
             <Box className={classes.logoContainer}>
-                <img 
-                    src={logoSrc} 
-                    alt="Language Learning Logo" 
-                    className={logoClass}
-                />
+                {!imageError && (
+                    <img 
+                        src={lanLogo}
+                        alt="Language Learning Logo" 
+                        className={logoClass}
+                        onError={handleImageError}
+                    />
+                )}
             </Box>
     );
 };
