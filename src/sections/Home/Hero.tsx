@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 const useStyles = createStyles((theme) => ({
     wrapper: {
         position: 'relative',
-        height: rem(750),
+        height: rem(700),
         overflow: 'hidden',
 
         [theme.fn.smallerThan('md')]: {
-            height: rem(570),
+            height: rem(600),
         },
     },
 
@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
         left: 0,
         width: '100%',
         height: '100%',
-        paddingTop: rem(100),
+        paddingTop: rem(70),
         paddingBottom: rem(200),
         backgroundSize: 'calc(100% + 10px)',
         backgroundPosition: 'center',
