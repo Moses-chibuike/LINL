@@ -1,7 +1,7 @@
 import {createStyles, rem, TitleProps, UnstyledButton, Box} from "@mantine/core";
 import {Link} from "react-router-dom";
 import { useState } from "react";
-import lanLogo from '../assets/lan.svg';
+import lanLogo from '../assets/Lan.svg';
 
 const useStyles = createStyles((theme) => ({
     logoContainer: {
