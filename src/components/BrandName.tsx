@@ -1,5 +1,6 @@
-import {createStyles, rem, TitleProps, UnstyledButton, Box} from "@mantine/core";
-import {Link} from "react-router-dom";
+import { createStyles, rem, TitleProps, UnstyledButton, Box } from "@mantine/core";
+import { Link } from "react-router-dom";
+import lanLogo from "/lan.svg"; // Import directly
 
 const useStyles = createStyles((theme) => ({
     logoContainer: {
@@ -27,7 +28,7 @@ const useStyles = createStyles((theme) => ({
     logoWhite: {
         height: rem(60),
         width: 'auto',
-        filter: 'brightness(0) invert(1)', // Makes the logo white for grayscale variant
+        filter: 'brightness(0) invert(1)',
 
         [theme.fn.smallerThan('md')]: {
             height: rem(50),
@@ -47,7 +48,6 @@ interface IProps extends TitleProps {
 const Brand = ({asLink, variant, ...others}: IProps) => {
     const {classes} = useStyles();
 
-    const logoSrc = "/lan.svg";
     const logoClass = variant === 'grayscale' ? classes.logoWhite : classes.logo;
 
     return (
@@ -55,7 +55,7 @@ const Brand = ({asLink, variant, ...others}: IProps) => {
             <UnstyledButton component={Link} to="/">
                 <Box className={classes.logoContainer}>
                     <img 
-                        src={logoSrc} 
+                        src={lanLogo} 
                         alt="Language Learning Logo" 
                         className={logoClass}
                     />
@@ -63,7 +63,7 @@ const Brand = ({asLink, variant, ...others}: IProps) => {
             </UnstyledButton> :
             <Box className={classes.logoContainer}>
                 <img 
-                    src={logoSrc} 
+                    src={lanLogo} 
                     alt="Language Learning Logo" 
                     className={logoClass}
                 />
