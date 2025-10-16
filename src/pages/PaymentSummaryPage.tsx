@@ -15,16 +15,213 @@ import {
     Tooltip,
     CopyButton,
     ThemeIcon,
-    Center
+    Center,
+    TextInput,
+    FileInput,
+    Alert,
+    Loader
 } from "@mantine/core";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IconCheck, IconCopy, IconHeart } from "@tabler/icons-react";
+import { IconCheck, IconCopy, IconHeart, IconAlertCircle, IconUpload } from "@tabler/icons-react";
 
 interface LocationState {
     amount: string;
-    donationType: string;
+    courseTitle: string;
+    courseLevel: string;
+    courseFormat: string;
+    courseFee: number;
+    registrationType: string;
+    invoiceType: string;
 }
+
+interface FormState {
+    submitted: boolean;
+    submitting: boolean;
+    error: string | null;
+}
+
+const PaymentConfirmationForm = ({
+    courseTitle,
+    amount,
+    onSubmitSuccess,
+    onBack
+}: {
+    courseTitle: string;
+    amount: string;
+    onSubmitSuccess: () => void;
+    onBack: () => void;
+}) => {
+    const [state, setState] = useState<FormState>({
+        submitted: false,
+        submitting: false,
+        error: null
+    });
+
+    const isMobile = window.innerWidth < 768;
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setState({ submitting: true, submitted: false, error: null });
+
+        try {
+            const form = e.target as HTMLFormElement;
+            const data = new FormData(form);
+            data.append('courseTitle', courseTitle);
+            data.append('amount', amount);
+            data.append('_subject', `New Course Registration - ${courseTitle}`);
+            data.append('_captcha', 'false');
+
+            const response = await fetch('https://formspree.io/f/myzgvaoo', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setState({ submitted: true, submitting: false, error: null });
+                form.reset();
+                setTimeout(() => {
+                    onSubmitSuccess();
+                }, 2000);
+            } else {
+                const responseData = await response.json();
+                setState({ submitted: false, submitting: false, error: responseData.error || 'Failed to submit form' });
+            }
+        } catch (error) {
+            if (error instanceof Error) {
+                setState({ submitted: false, submitting: false, error: error.message });
+            } else {
+                setState({ submitted: false, submitting: false, error: 'An unknown error occurred' });
+            }
+        }
+    };
+
+    return (
+        <Paper
+            shadow="xs"
+            p="xl"
+            sx={{
+                width: '100%',
+                maxWidth: '600px',
+                margin: '0 auto'
+            }}
+        >
+            {state.submitted ? (
+                <Box sx={{ textAlign: 'center' }}>
+                    <Title order={3} color="teal" mb="md">
+                        Form Submitted Successfully!
+                    </Title>
+                    <Text color="dimmed">
+                        Thank you for submitting your payment confirmation. We've received your details and will verify your payment shortly.
+                    </Text>
+                </Box>
+            ) : (
+                <>
+                    {/* Course Info Summary */}
+                    <Box
+                        mb="xl"
+                        p="lg"
+                        sx={(theme) => ({
+                            backgroundColor: theme.colors.blue[0],
+                            borderRadius: theme.radius.md,
+                            borderLeft: `4px solid ${theme.colors.blue[5]}`
+                        })}
+                    >
+                        <Text size="sm" color="dimmed" mb="xs">
+                            Course Registration
+                        </Text>
+                        <Title order={4}>{courseTitle}</Title>
+                        <Text weight={500} color="blue" mt="xs">
+                            Amount: ₦{parseFloat(amount).toLocaleString()}
+                        </Text>
+                    </Box>
+
+                    {/* Error Alert */}
+                    {state.error && (
+                        <Alert
+                            icon={<IconAlertCircle size={16} />}
+                            title="Error"
+                            color="red"
+                            mb="lg"
+                        >
+                            {state.error}
+                        </Alert>
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+                        <Stack spacing="md">
+                            {/* Full Name */}
+                            <TextInput
+                                label="Full Name"
+                                placeholder="Enter your full name"
+                                required
+                                name="fullName"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+
+                            {/* Phone Number */}
+                            <TextInput
+                                label="Phone Number"
+                                placeholder="Enter your phone number"
+                                required
+                                name="phoneNumber"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+
+                            {/* Email */}
+                            <TextInput
+                                label="Email Address"
+                                placeholder="Enter your email address"
+                                type="email"
+                                required
+                                name="email"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+
+                            {/* Receipt Upload */}
+                            <FileInput
+                                label="Upload Payment Receipt"
+                                placeholder="Click to select payment receipt"
+                                icon={<IconUpload size={14} />}
+                                accept="image/*,.pdf"
+                                required
+                                name="receipt"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+                        </Stack>
+
+                        {/* Buttons */}
+                        <Group position="apart" mt="xl">
+                            <Button
+                                variant="outline"
+                                onClick={onBack}
+                                disabled={state.submitting}
+                            >
+                                Back
+                            </Button>
+                            <Button
+                                type="submit"
+                                disabled={state.submitting || state.submitted}
+                                loading={state.submitting}
+                                color={state.submitted ? 'green' : 'blue'}
+                                leftIcon={state.submitted ? <IconCheck size={18} /> : <IconUpload size={18} />}
+                            >
+                                {state.submitting ? 'Submitting...' : state.submitted ? 'Submitted Successfully' : 'Submit Confirmation'}
+                            </Button>
+                        </Group>
+                    </form>
+                </>
+            )}
+        </Paper>
+    );
+};
 
 const PaymentSummaryPage = (): JSX.Element => {
     const location = useLocation();
@@ -32,6 +229,7 @@ const PaymentSummaryPage = (): JSX.Element => {
     const [paymentData, setPaymentData] = useState<LocationState | null>(null);
     const [invoiceNumber, setInvoiceNumber] = useState("");
     const [showTransferDetails, setShowTransferDetails] = useState(false);
+    const [showConfirmationForm, setShowConfirmationForm] = useState(false);
     const [showSuccessView, setShowSuccessView] = useState(false);
 
     const isMobile = window.innerWidth < 768;
@@ -53,24 +251,16 @@ const PaymentSummaryPage = (): JSX.Element => {
 
     const formatAmount = (amount: string): string => {
         const numAmount = parseFloat(amount);
-        return numAmount.toLocaleString('en-US', {
+        return new Intl.NumberFormat('en-NG', {
             style: 'currency',
-            currency: 'USD'
-        });
+            currency: 'NGN',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(numAmount);
     };
 
-    const formatDonationType = (type: string): string => {
-        switch(type) {
-            case 'one-time':
-                return 'One-Time Donation';
-            case 'monthly':
-                return 'Monthly Donation';
-            case 'weekly':
-                return 'Weekly Donation';
-            default:
-                return 'Donation';
-        }
-    };
+    const isCoursRegistration = paymentData?.registrationType === 'course';
+    const invoiceType = paymentData?.invoiceType || (isCoursRegistration ? 'Course Registration' : 'Payment Invoice');
 
     const handleProceedToPayment = () => {
         setShowTransferDetails(true);
@@ -78,28 +268,26 @@ const PaymentSummaryPage = (): JSX.Element => {
 
     const handleBack = () => {
         if (showSuccessView) {
-            // If on success view, go back to transfer details
             setShowSuccessView(false);
+        } else if (showConfirmationForm) {
+            setShowConfirmationForm(false);
         } else if (showTransferDetails) {
-            // If on transfer details, go back to summary
             setShowTransferDetails(false);
         } else {
-            // If on summary, go back to how it works
             navigate('/how-it-works');
         }
     };
 
     const handleComplete = () => {
-        // Show success view instead of alert and navigation
-        setShowSuccessView(true);
+        setShowConfirmationForm(true);
     };
 
     const handleGoHome = () => {
         navigate('/how-it-works');
     };
 
-    const handleDonateAgain = () => {
-        navigate('/donate');
+    const handleContinue = () => {
+        navigate('/how-it-works');
     };
 
     if (!paymentData) {
@@ -145,7 +333,15 @@ const PaymentSummaryPage = (): JSX.Element => {
                                     : 'Payment Summary'}
                         </Title>
 
-                        {showSuccessView ? (
+                        {showConfirmationForm ? (
+                            /* Payment Confirmation Form */
+                            <PaymentConfirmationForm
+                                courseTitle={paymentData.courseTitle}
+                                amount={paymentData.amount}
+                                onSubmitSuccess={() => setShowSuccessView(true)}
+                                onBack={handleBack}
+                            />
+                        ) : showSuccessView ? (
                             /* Success View */
                             <Paper 
                                 shadow="sm" 
@@ -180,12 +376,15 @@ const PaymentSummaryPage = (): JSX.Element => {
                                         color: theme.colors.teal[7],
                                     })}
                                 >
-                                    Thank You for Your Generous Contribution!
+                                    {isCoursRegistration 
+                                        ? 'Thank You for Your Course Registration!' 
+                                        : 'Thank You for Your Generous Contribution!'}
                                 </Title>
                                 
                                 <Text size={isMobile ? "md" : "lg"} mb="xl" color="dimmed">
-                                    Your support helps us make a meaningful impact. We truly appreciate your 
-                                    generosity and commitment to our mission.
+                                    {isCoursRegistration
+                                        ? 'Your registration has been confirmed. We\'re excited to have you join our language course program.'
+                                        : 'Your support helps us make a meaningful impact. We truly appreciate your generosity and commitment to our mission.'}
                                 </Text>
 
                                 <Box 
@@ -198,12 +397,14 @@ const PaymentSummaryPage = (): JSX.Element => {
                                 >
                                     <Group spacing="xs" position="center" mb="xs">
                                         <IconHeart size={18} color="#ff6b6b" />
-                                        <Text weight={500} color="dark">Thank You Note</Text>
+                                        <Text weight={500} color="dark">
+                                            {isCoursRegistration ? 'Registration Confirmation' : 'Thank You Note'}
+                                        </Text>
                                     </Group>
                                     <Text size="sm" color="dimmed">
-                                        Every donation, no matter the size, brings us one step closer to creating positive change. 
-                                        Your contribution today will help us continue our important work. 
-                                        We'll keep you updated on the impact your donation is making.
+                                        {isCoursRegistration
+                                            ? `You are registered for ${paymentData.courseTitle}. Check your email for course details, start date, and access instructions. If you have any questions, feel free to contact us.`
+                                            : 'Every donation, no matter the size, brings us one step closer to creating positive change. Your contribution today will help us continue our important work. We\'ll keep you updated on the impact your donation is making.'}
                                     </Text>
                                 </Box>
 
@@ -213,13 +414,13 @@ const PaymentSummaryPage = (): JSX.Element => {
                                         size={isMobile ? "md" : "lg"} 
                                         onClick={handleGoHome}
                                     >
-                                        Return to Home
+                                        {isCoursRegistration ? 'View All Courses' : 'Return Home'}
                                     </Button>
                                     <Button 
                                         size={isMobile ? "md" : "lg"} 
-                                        onClick={handleGoHome}
+                                        onClick={handleContinue}
                                     >
-                                        Contribute Again
+                                        {isCoursRegistration ? 'Register Another' : 'Contribute Again'}
                                     </Button>
                                 </Group>
                             </Paper>
@@ -237,10 +438,12 @@ const PaymentSummaryPage = (): JSX.Element => {
                                 <Group position="apart" mb="md">
                                     <Box>
                                         <Title order={3}>AlaoMeHelp</Title>
-                                        <Text size="sm" color="dimmed">Non-profit Organization</Text>
+                                        <Text size="sm" color="dimmed">
+                                            {isCoursRegistration ? 'Language Education' : 'Non-profit Organization'}
+                                        </Text>
                                     </Box>
-                                    <Box>
-                                        <Title order={4}>Invoice</Title>
+                                    <Box sx={{ textAlign: 'right' }}>
+                                        <Title order={4}>{invoiceType}</Title>
                                         <Text size="sm">{invoiceNumber}</Text>
                                         <Text size="sm">{currentDate}</Text>
                                     </Box>
@@ -249,29 +452,46 @@ const PaymentSummaryPage = (): JSX.Element => {
                                 <Divider my="lg" />
 
                                 <Box mb="xl">
-                                    <Title order={4} mb="md">Donation Details</Title>
+                                    <Title order={4} mb="md">
+                                        {isCoursRegistration ? 'Course Registration Details' : 'Donation Details'}
+                                    </Title>
                                     
                                     <List spacing="xs">
-                                        <List.Item>
-                                            <Group position="apart">
-                                                <Text>Donation Type:</Text>
-                                                <Text weight={500}>{formatDonationType(paymentData.donationType)}</Text>
-                                            </Group>
-                                        </List.Item>
-                                        <List.Item>
-                                            <Group position="apart">
-                                                <Text>Amount:</Text>
-                                                <Text weight={700} size="lg">{formatAmount(paymentData.amount)}</Text>
-                                            </Group>
-                                        </List.Item>
+                                        <>
+                                            <List.Item>
+                                                <Group position="apart">
+                                                    <Text>Course:</Text>
+                                                    <Text weight={500}>{paymentData.courseTitle}</Text>
+                                                </Group>
+                                            </List.Item>
+                                            <List.Item>
+                                                <Group position="apart">
+                                                    <Text>Level:</Text>
+                                                    <Text weight={500}>{paymentData.courseLevel}</Text>
+                                                </Group>
+                                            </List.Item>
+                                            <List.Item>
+                                                <Group position="apart">
+                                                    <Text>Format:</Text>
+                                                    <Text weight={500}>{paymentData.courseFormat}</Text>
+                                                </Group>
+                                            </List.Item>
+                                            <List.Item>
+                                                <Group position="apart">
+                                                    <Text>Registration Fee:</Text>
+                                                    <Text weight={700} size="lg">{formatAmount(paymentData.amount)}</Text>
+                                                </Group>
+                                            </List.Item>
+                                        </>
                                     </List>
                                 </Box>
 
                                 <Divider my="lg" />
 
                                 <Text size="sm" color="dimmed" mb="md">
-                                    Your donation will help us make the world a better place. 
-                                    Thank you for your generosity and support.
+                                    {isCoursRegistration
+                                        ? 'Your course registration will help you achieve your learning goals. Thank you for choosing us.'
+                                        : 'Your donation will help us make the world a better place. Thank you for your generosity and support.'}
                                 </Text>
 
                                 <Group position="right" mt="xl">
@@ -287,7 +507,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                             /* Transfer Details Card */
                             <Card shadow="sm" p={isMobile ? "md" : "xl"} radius="md" sx={{ maxWidth: '600px', margin: '0 auto' }}>
                                 <Title order={3} size={isMobile ? 18 : 20} mb={isMobile ? 16 : 24} weight={600}>
-                                    Nigerian Account
+                                    Nigerian Bank Account
                                 </Title>
                                 <Stack spacing={isMobile ? "md" : "lg"}>
                                     <Group position="apart" spacing={isMobile ? "xs" : "md"}>
@@ -356,9 +576,11 @@ const PaymentSummaryPage = (): JSX.Element => {
                                 </Stack>
 
                                 <Text size="sm" mt="xl" mb="md">
-                                    <Text weight={500}>Amount: {formatAmount(paymentData.amount)}</Text>
+                                    <Text weight={500}>
+                                        Registration Fee: {formatAmount(paymentData.amount)}
+                                    </Text>
                                     <Text color="dimmed" mt="xs">
-                                        Please use invoice number {invoiceNumber} as the payment reference.
+                                        Please use invoice number <strong>{invoiceNumber}</strong> as the payment reference.
                                     </Text>
                                 </Text>
                                 

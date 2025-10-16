@@ -35,6 +35,8 @@
     "dayjs": "^1.11.7",
     "embla-carousel-react": "7.1.0",
     "mantine-datatable": "^2.5.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.9",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
@@ -42,7 +44,9 @@
     "react-router-dom": "^6.10.0"
   },
   "devDependencies": {
+    "@types/multer": "^2.0.0",
     "@types/node": "^24.7.2",
+    "@types/nodemailer": "^7.0.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-helmet": "^6.1.6",
