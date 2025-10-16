@@ -185,7 +185,7 @@ const slides = [
         icon: IconLanguage,
         badge: 'Start Learning',
         title: 'Master New Languages,',
-        subtitle: 'One Lesson at a Time.',
+        subtitle: 'Become Fluent.',
         description: 'Learn any language with interactive lessons.',
     },
     {
