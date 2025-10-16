@@ -21,7 +21,7 @@ const useStyles = createStyles((theme) => ({
         },
 
         [theme.fn.smallerThan('sm')]: {
-            height: rem(42),
+            height: rem(50),
         },
     },
 
@@ -35,7 +35,7 @@ const useStyles = createStyles((theme) => ({
         },
 
         [theme.fn.smallerThan('sm')]: {
-            height: rem(42),
+            height: rem(50),
         },
     }
 }))
