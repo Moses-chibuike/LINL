@@ -12,29 +12,29 @@ const useStyles = createStyles((theme) => ({
     },
 
     logo: {
-        height: rem(60),
+        height: rem(45),
         width: 'auto',
 
         [theme.fn.smallerThan('md')]: {
-            height: rem(50),
+            height: rem(38),
         },
 
         [theme.fn.smallerThan('sm')]: {
-            height: rem(45),
+            height: rem(32),
         },
     },
 
     logoWhite: {
-        height: rem(60),
+        height: rem(45),
         width: 'auto',
         filter: 'brightness(0) invert(1)', // Makes the logo white for grayscale variant
 
         [theme.fn.smallerThan('md')]: {
-            height: rem(50),
+            height: rem(38),
         },
 
         [theme.fn.smallerThan('sm')]: {
-            height: rem(45),
+            height: rem(32),
         },
     }
 }))
