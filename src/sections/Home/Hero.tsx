@@ -10,7 +10,7 @@ const useStyles = createStyles((theme) => ({
         overflow: 'hidden',
 
         [theme.fn.smallerThan('md')]: {
-            height: rem(600),
+            height: rem(650),
         },
     },
 
