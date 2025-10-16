@@ -6,11 +6,11 @@ import { useState, useEffect } from 'react';
 const useStyles = createStyles((theme) => ({
     wrapper: {
         position: 'relative',
-        height: rem(640),
+        height: rem(750),
         overflow: 'hidden',
 
         [theme.fn.smallerThan('md')]: {
-            height: rem(560),
+            height: rem(570),
         },
     },
 
@@ -20,9 +20,9 @@ const useStyles = createStyles((theme) => ({
         left: 0,
         width: '100%',
         height: '100%',
-        paddingTop: rem(180),
-        paddingBottom: rem(130),
-        backgroundSize: 'cover',
+        paddingTop: rem(100),
+        paddingBottom: rem(200),
+        backgroundSize: 'calc(100% + 10px)',
         backgroundPosition: 'center',
         opacity: 0,
         transition: 'opacity 0.8s ease-in-out',
@@ -194,7 +194,7 @@ const slides = [
         badge: 'Interactive Lessons',
         title: 'Learn by Doing,',
         subtitle: 'Practice Makes Perfect.',
-        description: 'Engage with real-world scenarios and practice conversations with native speakers.',
+        description: 'practice conversations with native speakers.',
     },
     {
         image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1031&q=80',
