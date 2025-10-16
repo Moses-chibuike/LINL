@@ -56,7 +56,7 @@ const Brand = ({asLink, variant, ...others}: IProps) => {
                 <Box className={classes.logoContainer}>
                     <img 
                         src={logoSrc} 
-                        alt="Language Learning Logo" 
+                        alt="Language integration Logo" 
                         className={logoClass}
                     />
                 </Box>
