@@ -17,7 +17,6 @@ import {
     ThemeIcon,
     Center,
     TextInput,
-    FileInput,
     Alert,
     Loader
 } from "@mantine/core";
@@ -72,7 +71,7 @@ const PaymentConfirmationForm = ({
             data.append('_subject', `New Course Registration - ${courseTitle}`);
             data.append('_captcha', 'false');
 
-            const response = await fetch('https://formspree.io/f/myzgvaoo', {
+            const response = await fetch('https://formspree.io/f/mnngwzzj', {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -114,9 +113,17 @@ const PaymentConfirmationForm = ({
                     <Title order={3} color="teal" mb="md">
                         Form Submitted Successfully!
                     </Title>
-                    <Text color="dimmed">
+                    <Text color="dimmed" mb="xl">
                         Thank you for submitting your payment confirmation. We've received your details and will verify your payment shortly.
                     </Text>
+                    <Group position="center" spacing="md">
+                        <Button onClick={() => window.location.href = '/'}>
+                            Go to Home Page
+                        </Button>
+                        <Button onClick={() => window.location.href = '/how-it-works'}>
+                            View Courses
+                        </Button>
+                    </Group>
                 </Box>
             ) : (
                 <>
@@ -155,7 +162,7 @@ const PaymentConfirmationForm = ({
                         <Stack spacing="md">
                             {/* Full Name */}
                             <TextInput
-                                label="Full Name"
+                                label="Full Name *"
                                 placeholder="Enter your full name"
                                 required
                                 name="fullName"
@@ -165,7 +172,7 @@ const PaymentConfirmationForm = ({
 
                             {/* Phone Number */}
                             <TextInput
-                                label="Phone Number"
+                                label="Phone Number *"
                                 placeholder="Enter your phone number"
                                 required
                                 name="phoneNumber"
@@ -175,7 +182,7 @@ const PaymentConfirmationForm = ({
 
                             {/* Email */}
                             <TextInput
-                                label="Email Address"
+                                label="Email Address *"
                                 placeholder="Enter your email address"
                                 type="email"
                                 required
@@ -184,14 +191,30 @@ const PaymentConfirmationForm = ({
                                 onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
                             />
 
-                            {/* Receipt Upload */}
-                            <FileInput
-                                label="Upload Payment Receipt"
-                                placeholder="Click to select payment receipt"
-                                icon={<IconUpload size={14} />}
-                                accept="image/*,.pdf"
+                            {/* Bank */}
+                            <TextInput
+                                label="Bank *"
+                                placeholder="Enter your bank name"
                                 required
-                                name="receipt"
+                                name="bank"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+
+                            {/* Transaction Reference */}
+                            <TextInput
+                                label="Transaction Reference"
+                                placeholder="Enter transaction reference (optional)"
+                                name="transactionReference"
+                                disabled={state.submitting}
+                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                            />
+
+                            {/* Session ID */}
+                            <TextInput
+                                label="Session ID"
+                                placeholder="Enter session ID (optional)"
+                                name="sessionId"
                                 disabled={state.submitting}
                                 onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
                             />

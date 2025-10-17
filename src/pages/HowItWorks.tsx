@@ -226,9 +226,16 @@ const HowItWorksPage = (): JSX.Element => {
                             <Text
                                 size="lg"
                                 color="dimmed"
-                                sx={{ maxWidth: '700px', margin: '0 auto' }}
+                                sx={{ maxWidth: '700px', margin: '0 auto', marginBottom: '1rem' }}
                             >
                                 Choose from our comprehensive range of language courses tailored to your level and learning preferences.
+                            </Text>
+                            <Text
+                                size="md"
+                                color="blue"
+                                sx={{ maxWidth: '700px', margin: '0 auto', fontWeight: 500 }}
+                            >
+                                These breakdown applies to German, Spanish and French languages.
                             </Text>
                         </Box>
 
