@@ -140,7 +140,7 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                     <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
-                                    <Text weight={500} size={isMobile ? "sm" : "md"}>AlaoMeHelp Foundation</Text>
+                                    <Text weight={500} size={isMobile ? "sm" : "md"}>Language Integration Nigeria Limited Foundation</Text>
                                 </Group>
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
@@ -168,7 +168,7 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                     <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
-                                    <Text weight={500} size={isMobile ? "sm" : "md"}>AlaoMeHelp International</Text>
+                                    <Text weight={500} size={isMobile ? "sm" : "md"}>Language Integration Nigeria Limited International</Text>
                                 </Group>
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>

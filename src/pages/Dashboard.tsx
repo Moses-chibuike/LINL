@@ -60,7 +60,7 @@ const DashboardPage = () => {
 
     const teamMembers = [
         {
-            name: 'Oluseyi Ifeanyichukwu Alao',
+            name: 'Obinna Aludu',
             role: 'Founder',
             avatar: '/assets/img/8.png',
             bio: 'Leading our mission to transform lives through purpose and innovation.',

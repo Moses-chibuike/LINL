@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import {ICampaign} from "../types";
 import campaignsData from "../data/Campaigns.json";
 import {
-    Accordion,
     ActionIcon,
     Anchor,
     Avatar,
@@ -18,7 +17,6 @@ import {
     Image,
     Paper,
     PaperProps,
-    Progress,
     Stack,
     Text,
     TextProps,
@@ -39,7 +37,7 @@ dayjs.extend(localizedFormat);
 
 const CampaignDetailsPage = (): JSX.Element => {
     const {id} = useParams();
-    const navigate = useNavigate(); // Add the navigate hook
+    const navigate = useNavigate();
     const [campaign, setCampaign] = useState<ICampaign>();
     const [opened, {open, close}] = useDisclosure(false);
     const [following, setFollowing] = useToggle();
@@ -69,9 +67,8 @@ const CampaignDetailsPage = (): JSX.Element => {
         setCampaign(campaignsData.data.find(_ => _.id === id))
     }, [id]);
 
-    // New function to handle donation button click
     const handleDonateClick = () => {
-        navigate('/how-it-works'); // Navigate to the HowItWorksPage
+        navigate('/how-it-works');
     };
 
     return (
@@ -83,7 +80,7 @@ const CampaignDetailsPage = (): JSX.Element => {
                 {campaign ? <Container size="lg">
                     <BackButton mb="md"/>
                     <Grid>
-                        <Grid.Col lg={8}>
+                        <Grid.Col lg={12}>
                             <Stack>
                                 <Card padding="md" shadow="sm">
                                     <Card.Section>
@@ -126,172 +123,14 @@ const CampaignDetailsPage = (): JSX.Element => {
                                         }
                                         <Text {...subTitleProps}>Our story</Text>
                                         <Text size="sm">{campaign?.description}</Text>
-                                        {matchesMobile && <>
-                                            <Divider/>
-                                            <Flex align="flex-end" gap="sm">
-                                                <Title {...titleProps} align="center">{campaign?.amountRaised}</Title>
-                                                <Text fw={500} align="center" color="dimmed">raised
-                                                    of {campaign?.goal}</Text>
-                                            </Flex>
-                                            <Progress value={campaign?.daysLeft} size="md"/>
-                                            <Flex justify="space-between">
-                                                <Text fw={500}>{campaign?.daysLeft}% Funded</Text>
-                                                <Text fw={500}>{campaign?.contributors} Donors</Text>
-                                            </Flex>
-                                            <Flex align="center" gap="xs">
-                                                {/* Update mobile donate button */}
-                                                <Button onClick={handleDonateClick} fullWidth>Donate</Button>
-                                                <ActionIcon
-                                                    variant="subtle"
-                                                    onClick={open}
-                                                    color="blue"
-                                                    title="Share with your friends"
-                                                    size="lg"
-                                                >
-                                                    <IconShare size={iconSize}/>
-                                                </ActionIcon>
-                                                <ActionIcon
-                                                    title={`${following ? 'Unfollow' : 'Follow'} this campaign`}
-                                                    size="lg"
-                                                    color={'secondary'}
-                                                    onClick={() => {
-                                                        setFollowing();
-                                                        notifications.show({
-                                                            title: 'Notification',
-                                                            message: `${following ? 'Following' : 'Unfollowed'} this campaign`,
-                                                            withBorder: true,
-                                                            styles: (theme) => ({
-                                                                root: {
-                                                                    backgroundColor: theme.colors.blue[6],
-                                                                    borderColor: theme.colors.blue[6],
-                                                                    '&::before': {backgroundColor: theme.white},
-                                                                },
-                                                                title: {color: theme.white},
-                                                                description: {color: theme.white},
-                                                                closeButton: {
-                                                                    color: theme.white,
-                                                                    '&:hover': {backgroundColor: theme.colors.blue[7]},
-                                                                },
-                                                            }),
-                                                        })
-                                                    }}
-                                                >
-                                                    {following ?
-                                                        <IconHeartFilled size={iconSize}/> :
-                                                        <IconHeart size={iconSize}/>
-                                                    }
-                                                </ActionIcon>
-                                            </Flex>
-                                        </>}
                                     </Stack>
                                 </Card>
-                                <Paper {...paperProps}>
-                                    <Text {...subTitleProps} mb="sm">Organizer</Text>
-                                    <UserCard/>
-                                </Paper>
-                                <Paper {...paperProps}>
-                                    <Text>Created on {campaign?.createdAt ? dayjs(campaign.createdAt).format('LL') : ''}</Text>
-                                </Paper>
-                                {!matchesMobile &&
-                                    <Button
-                                        leftIcon={<IconFlag size={iconSize}/>}
-                                        variant="subtle"
-                                        color="secondary"
-                                    >
-                                        Report campaign
-                                    </Button>
-                                }
-                            </Stack>
-                        </Grid.Col>
-                        <Grid.Col lg={4}>
-                            <Stack>
-                                {!matchesMobile &&
-                                    <Paper {...paperProps}>
-                                        <Stack spacing="sm">
-                                            <Title {...titleProps} align="center">{campaign?.amountRaised}</Title>
-                                            <Text fw={500} align="center" color="dimmed">raised
-                                                of {campaign?.goal}</Text>
-                                            <Progress value={campaign?.daysLeft} size="md"/>
-                                            <Flex justify="space-between">
-                                                <Text fw={500}>{campaign?.daysLeft}% Funded</Text>
-                                                <Text fw={500}>{campaign?.contributors} Donors</Text>
-                                            </Flex>
-                                            {/* Update desktop donate button */}
-                                            <Button size="xl" onClick={handleDonateClick}>Donate</Button>
-                                            <Button
-                                                leftIcon={<IconShare size={iconSize}/>}
-                                                variant="outline"
-                                                onClick={open}
-                                                color="blue"
-                                            >
-                                                Share with friends
-                                            </Button>
-                                            <Button
-                                                leftIcon={following ? <IconHeartFilled size={iconSize}/> :
-                                                    <IconHeart size={iconSize}/>}
-                                                variant={following ? 'filled' : 'subtle'}
-                                                color="secondary"
-                                                onClick={() => {
-                                                    setFollowing();
-                                                    notifications.show({
-                                                        title: 'Notification',
-                                                        message: `${following ? 'Following' : 'Unfollowed'} this campaign`,
-                                                        withBorder: true,
-                                                        styles: (theme) => ({
-                                                            root: {
-                                                                backgroundColor: theme.colors.blue[6],
-                                                                borderColor: theme.colors.blue[6],
-                                                                '&::before': {backgroundColor: theme.white},
-                                                            },
-                                                            title: {color: theme.white},
-                                                            description: {color: theme.white},
-                                                            closeButton: {
-                                                                color: theme.white,
-                                                                '&:hover': {backgroundColor: theme.colors.blue[7]},
-                                                            },
-                                                        }),
-                                                    })
-                                                }}
-                                            >
-                                                {following ? 'Unfollow' : 'Follow'} this campaign
-                                            </Button>
-                                        </Stack>
-                                    </Paper>
-                                }
-                                <Paper {...paperProps}>
-                                    <Text {...subTitleProps} mb="md">Donation FAQ</Text>
-                                    <Accordion defaultValue="customization" variant="separated">
-                                        <Accordion.Item value="customization">
-                                            <Accordion.Control>When will {campaign?.createdBy} get my
-                                                payment?</Accordion.Control>
-                                            <Accordion.Panel>Your payment is sent directly to Dora so it immediately
-                                                helps
-                                                their campaign.</Accordion.Panel>
-                                        </Accordion.Item>
 
-                                        <Accordion.Item value="flexibility">
-                                            <Accordion.Control>How secure is the payment process?</Accordion.Control>
-                                            <Accordion.Panel>Payments are made in a highly-secure environment. We use
-                                                industry leading technology (such as SSL) to keep your information safe
-                                                and encrypted</Accordion.Panel>
-                                        </Accordion.Item>
-                                    </Accordion>
-                                </Paper>
-                                {matchesMobile &&
-                                    <Button
-                                        leftIcon={<IconFlag size={iconSize}/>}
-                                        variant="subtle"
-                                        color="secondary"
-                                    >
-                                        Report campaign
-                                    </Button>
-                                }
                             </Stack>
                         </Grid.Col>
                     </Grid>
                 </Container> : <NotFound/>}
                 <ShareModal opened={opened} onClose={close} campaign={campaign} iconSize={iconSize}/>
-                {/* Remove DonationDrawer since we're navigating instead */}
             </Box>
         </>
     );

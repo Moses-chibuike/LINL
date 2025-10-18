@@ -328,10 +328,10 @@ const PaymentSummaryPage = (): JSX.Element => {
             <Helmet>
                 <title>
                     {showSuccessView 
-                        ? 'Thank You | AlaoMeHelp' 
+                        ? 'Thank You | Language Integration Nigeria Limited' 
                         : showTransferDetails 
-                            ? 'Payment Details | AlaoMeHelp' 
-                            : 'Payment Summary | AlaoMeHelp'}
+                            ? 'Payment Details | Language Integration Nigeria Limited' 
+                            : 'Payment Summary | Language Integration Nigeria Limited'}
                 </title>
             </Helmet>
             
@@ -460,7 +460,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                             >
                                 <Group position="apart" mb="md">
                                     <Box>
-                                        <Title order={3}>AlaoMeHelp</Title>
+                                        <Title order={3}>Language Integration Nigeria Limited</Title>
                                         <Text size="sm" color="dimmed">
                                             {isCoursRegistration ? 'Language Education' : 'Non-profit Organization'}
                                         </Text>
@@ -552,8 +552,8 @@ const PaymentSummaryPage = (): JSX.Element => {
                                     <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                         <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
                                         <Group spacing="xs">
-                                            <Text weight={500} size={isMobile ? "sm" : "md"}>AlaoMeHelp Foundation</Text>
-                                            <CopyButton value="AlaoMeHelp Foundation" timeout={2000}>
+                                            <Text weight={500} size={isMobile ? "sm" : "md"}>Language Integration Nigeria Limited Foundation</Text>
+                                            <CopyButton value="Language Integration Nigeria Limited Foundation" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
                                                         <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>

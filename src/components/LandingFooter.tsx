@@ -159,7 +159,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
                 <div className={classes.logo}>
                     <Stack align="flex-start">
                         <BrandName size={40}/>
-                        <Text size="sm">AlaoMeHelp is an independent NGO dedicated to turning resilience into hope. We bring support, resources, and opportunities to the most vulnerable members of society, helping them rise and thrive. 
+                        <Text size="sm">At Language Integration Nigeria Limited, we believe resilience deserves a chance to shine. As an independent NGO, we bring hope, support, and meaningful opportunities to the most vulnerable, helping them build brighter, stronger futures. 
                         </Text>
                     </Stack>
                 </div>
@@ -167,7 +167,7 @@ const LandingFooter = ({data}: FooterLinksProps) => {
             </Container>
             <Container className={classes.afterFooter} size="lg">
                 <Text size="sm">
-                    © {new Date().getFullYear()} AlaoMeHelp. All rights reserved.
+                    © {new Date().getFullYear()} Language Integration Nigeria Limited. All rights reserved.
                 </Text>
 
                 <Group spacing={0} className={classes.social} position="right" noWrap>

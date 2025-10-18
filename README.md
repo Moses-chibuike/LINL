@@ -6,7 +6,7 @@
 
 ### About:
 
-AlaoMeHelp is an independent NGO with a simple but powerful mission: to transform lives by investing in resilience, courage, and untapped potential.
+Language Integration Nigeria Limited is an independent NGO with a simple but powerful mission: to transform lives by investing in resilience, courage, and untapped potential.
 
 #### Available Pages
 
