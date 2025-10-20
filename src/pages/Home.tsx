@@ -47,27 +47,19 @@ const HomePage = (): JSX.Element => {
                             {...subTitleProps}
                             style={{ color: '#6c757d' }}
                         >
-                            Language Integration Nigeria Limited is a premier language training institution dedicated to breaking down language barriers and connecting Nigerians to global opportunities. We specialize in teaching Spanish, German, and French—three of the world's most influential languages that open doors to international education, career advancement, and cultural enrichment.
+                            Language Integration Nigeria Limited is a premier language training institution dedicated to breaking down language barriers and connecting Nigerians to global opportunities. We specialize in teaching Spanish, German, French, and Chinese (Mandarin)—four of the world's most influential languages that open doors to international education, career advancement, and cultural enrichment.
 
-                            Founded with a vision to empower individuals through language mastery, Language Integration Nigeria Limited combines expert instruction with innovative teaching methods. Our experienced native and certified instructors bring authentic cultural insights and proven pedagogical approaches to every lesson, ensuring you don't just learn a language—you live it.
+Founded with a vision to empower individuals through language mastery, Language Integration Nigeria Limited combines expert instruction with innovative teaching methods. Our experienced native and certified instructors bring authentic cultural insights and proven pedagogical approaches to every lesson, ensuring you don’t just learn a language—you live it.
 
-                            At Language Integration Nigeria Limited, we believe language learning is more than grammar and vocabulary. It's about:
+At Language Integration Nigeria Limited, we believe language learning is more than grammar and vocabulary. It’s about building bridges to international opportunities in education and career development, connecting cultures through authentic communication and understanding, empowering individuals to confidently navigate global environments, and creating pathways to study abroad programs, international certifications, and career advancement.
 
-                            Building bridges to international opportunities in education and career development.
+Whether you're preparing for international exams—DELE (Spanish), DELF (French), Goethe-Zertifikat (German), or HSK (Chinese)—planning to study or work abroad, or simply passionate about learning new languages, Language Integration Nigeria Limited provides the comprehensive training and support you need to succeed.
 
-                            Connecting cultures through authentic communication and understanding.
+Our courses are designed for all levels—from absolute beginners to advanced learners—with flexible scheduling options including weekday, weekend, and intensive programs. We offer both in-person classes and online learning to accommodate your lifestyle.
 
-                            Empowering individuals to confidently navigate global environments.
+Join thousands of successful students who have transformed their futures through language proficiency. At Language Integration Nigeria Limited, we’re not just teaching languages—we’re building global citizens, one conversation at a time.
 
-                            Creating pathways to study abroad programs, international certifications, and career advancement.
-
-                            Whether you're preparing for international exams (DELE, DELF, Goethe-Zertifikat), planning to study or work abroad, or simply passionate about learning new languages, Language Integration Nigeria Limited provides the comprehensive training and support you need to succeed.
-
-                            Our courses are designed for all levels—from absolute beginners to advanced learners—with flexible scheduling options including weekday, weekend, and intensive programs. We offer both in-person classes and online learning to accommodate your lifestyle.
-
-                            Join thousands of successful students who have transformed their futures through language proficiency. At Language Integration Nigeria Limited, we're not just teaching languages—we're building global citizens, one conversation at a time.
-
-                            Start your language journey today and unlock a world of possibilities!
+Start your language journey today and unlock a world of possibilities!
                         </Text>
                     </Box>
                     <FeaturesSection boxProps={boxProps} subtitleProps={subTitleProps}/>

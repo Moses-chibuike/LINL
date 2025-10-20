@@ -23,7 +23,7 @@ const featuresData: FeatureItem[] = [
         id: '1',
         icon: '🏠',
         title: 'Find Admissions',
-        description: '@ Alpha Deutsch we give admissions to every gender both who are ready to learn German',
+        description: '@ Language Integration Nigeria Limited we give admissions to every gender both who are ready to learn German',
         buttonText: 'Enrol Now',
         buttonLink: '#'
     },
@@ -31,7 +31,7 @@ const featuresData: FeatureItem[] = [
         id: '2',
         icon: '👍',
         title: 'Visa Application',
-        description: 'You have all the requirements needed to pursue your next career in Germany but you don\'t have a visa yet? Alpha Deutsch guides you perfectly on how to follow up your VISA application without any charge. It feels really good to work with us.',
+        description: 'You have all the requirements needed to pursue your next career in Germany but you don\'t have a visa yet? Language Integration Nigeria Limited guides you perfectly on how to follow up your VISA application without any charge. It feels really good to work with us.',
         buttonText: 'Contact',
         buttonLink: '#'
     },
@@ -47,7 +47,7 @@ const featuresData: FeatureItem[] = [
         id: '4',
         icon: '📦',
         title: 'Online Classes',
-        description: 'Still, in line with the four modules, Reading, Listening, Writing, and Speaking, Alpha Deutsch covers helps you solve distance challenges with our online intensive Course. It feels just like you are in a physical class, so long as you have a good internet supply.',
+        description: 'Still, in line with the four modules, Reading, Listening, Writing, and Speaking, Language Integration Nigeria Limited covers helps you solve distance challenges with our online intensive Course. It feels just like you are in a physical class, so long as you have a good internet supply.',
         buttonText: 'Enrol Now',
         buttonLink: '#'
     }

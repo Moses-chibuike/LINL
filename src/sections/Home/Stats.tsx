@@ -5,7 +5,7 @@ const mockData = [
     {
         amount: '5',
         label: 'Years Experience',
-        description: 'Alpha Deutsch is a registered company with about 8+ working experience'
+        description: 'Language Integration Nigeria Limited is a registered company with about 8+ working experience'
     },
     {
         amount: '10',
@@ -15,7 +15,7 @@ const mockData = [
     {
         amount: '200',
         label: 'Successful stories',
-        description: 'We have trained lots of students and watch them become a better ambassador of Alpha Deutsch'
+        description: 'We have trained lots of students and watch them become a better ambassador of Language Integration Nigeria Limited'
     }
 ]
 

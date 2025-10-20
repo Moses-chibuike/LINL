@@ -534,7 +534,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                     <Box>
                                         <Group position="apart" spacing="xs" mb={4}>
                                             <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Bank Name</Text>
-                                            <CopyButton value="First Bank of Nigeria" timeout={2000}>
+                                            <CopyButton value="Zenith Bank" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
                                                         <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
@@ -544,7 +544,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                        <Text weight={500} size={isMobile ? "sm" : "md"}>First Bank of Nigeria</Text>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"}>Zenith Bank</Text>
                                     </Box>
                                     <Divider />
                                     
@@ -563,7 +563,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                             </CopyButton>
                                         </Group>
                                         <Text weight={500} size={isMobile ? "sm" : "md"} sx={{ wordBreak: 'break-word' }}>
-                                            Language Integration Nigeria Limited Foundation
+                                            Aludogbu Samuel Obinna
                                         </Text>
                                     </Box>
                                     <Divider />
@@ -572,7 +572,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                     <Box>
                                         <Group position="apart" spacing="xs" mb={4}>
                                             <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Number</Text>
-                                            <CopyButton value="1234567890" timeout={2000}>
+                                            <CopyButton value="2004538211" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
                                                         <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
@@ -582,7 +582,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                        <Text weight={500} size={isMobile ? "sm" : "md"}>1234567890</Text>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"}>2004538211</Text>
                                     </Box>
                                     <Divider />
                                     
