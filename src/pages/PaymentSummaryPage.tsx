@@ -489,12 +489,6 @@ const PaymentSummaryPage = (): JSX.Element => {
                                             </List.Item>
                                             <List.Item>
                                                 <Group position="apart">
-                                                    <Text>Level:</Text>
-                                                    <Text weight={500}>{paymentData.courseLevel}</Text>
-                                                </Group>
-                                            </List.Item>
-                                            <List.Item>
-                                                <Group position="apart">
                                                     <Text>Format:</Text>
                                                     <Text weight={500}>{paymentData.courseFormat}</Text>
                                                 </Group>
@@ -529,73 +523,85 @@ const PaymentSummaryPage = (): JSX.Element => {
                         ) : (
                             /* Transfer Details Card */
                             <Card shadow="sm" p={isMobile ? "md" : "xl"} radius="md" sx={{ maxWidth: '600px', margin: '0 auto' }}>
+                                <Text size="sm" color="dimmed" mb="lg" align="center">
+                                    Please make your transfer to the account details below
+                                </Text>
                                 <Title order={3} size={isMobile ? 18 : 20} mb={isMobile ? 16 : 24} weight={600}>
                                     Nigerian Bank Account
                                 </Title>
                                 <Stack spacing={isMobile ? "md" : "lg"}>
-                                    <Group position="apart" spacing={isMobile ? "xs" : "md"}>
-                                        <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Bank Name</Text>
-                                        <Group spacing="xs">
-                                            <Text weight={500} size={isMobile ? "sm" : "md"}>First Bank of Nigeria</Text>
+                                    {/* Bank Name */}
+                                    <Box>
+                                        <Group position="apart" spacing="xs" mb={4}>
+                                            <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Bank Name</Text>
                                             <CopyButton value="First Bank of Nigeria" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
-                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                                                            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
+                                                            {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
                                                         </ActionIcon>
                                                     </Tooltip>
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                    </Group>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"}>First Bank of Nigeria</Text>
+                                    </Box>
                                     <Divider />
-                                    <Group position="apart" spacing={isMobile ? "xs" : "md"}>
-                                        <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
-                                        <Group spacing="xs">
-                                            <Text weight={500} size={isMobile ? "sm" : "md"}>Language Integration Nigeria Limited Foundation</Text>
+                                    
+                                    {/* Account Name */}
+                                    <Box>
+                                        <Group position="apart" spacing="xs" mb={4}>
+                                            <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
                                             <CopyButton value="Language Integration Nigeria Limited Foundation" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
-                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                                                            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
+                                                            {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
                                                         </ActionIcon>
                                                     </Tooltip>
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                    </Group>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"} sx={{ wordBreak: 'break-word' }}>
+                                            Language Integration Nigeria Limited Foundation
+                                        </Text>
+                                    </Box>
                                     <Divider />
-                                    <Group position="apart" spacing={isMobile ? "xs" : "md"}>
-                                        <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Number</Text>
-                                        <Group spacing="xs">
-                                            <Text weight={500} size={isMobile ? "sm" : "md"}>1234567890</Text>
+                                    
+                                    {/* Account Number */}
+                                    <Box>
+                                        <Group position="apart" spacing="xs" mb={4}>
+                                            <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Number</Text>
                                             <CopyButton value="1234567890" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
-                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                                                            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
+                                                            {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
                                                         </ActionIcon>
                                                     </Tooltip>
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                    </Group>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"}>1234567890</Text>
+                                    </Box>
                                     <Divider />
-                                    <Group position="apart" spacing={isMobile ? "xs" : "md"}>
-                                        <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Type</Text>
-                                        <Group spacing="xs">
-                                            <Text weight={500} size={isMobile ? "sm" : "md"}>Current Account</Text>
+                                    
+                                    {/* Account Type */}
+                                    <Box>
+                                        <Group position="apart" spacing="xs" mb={4}>
+                                            <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Type</Text>
                                             <CopyButton value="Current Account" timeout={2000}>
                                                 {({ copied, copy }) => (
                                                     <Tooltip label={copied ? "Copied" : "Copy"} withArrow position="right">
-                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy}>
-                                                            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+                                                        <ActionIcon color={copied ? "teal" : "gray"} onClick={copy} size="sm">
+                                                            {copied ? <IconCheck size={14} /> : <IconCopy size={14} />}
                                                         </ActionIcon>
                                                     </Tooltip>
                                                 )}
                                             </CopyButton>
                                         </Group>
-                                    </Group>
+                                        <Text weight={500} size={isMobile ? "sm" : "md"}>Current Account</Text>
+                                    </Box>
                                 </Stack>
 
                                 <Text size="sm" mt="xl" mb="md">
