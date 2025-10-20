@@ -1,5 +1,6 @@
-import {Box, BoxProps, TextProps, Title, TitleProps, Button, Container, Stack, Text} from '@mantine/core'
+import {Box, BoxProps, TextProps, Title, TitleProps, Button, Container, Stack, Text, useMantineTheme, MediaQuery} from '@mantine/core'
 import {TitleBadge} from "../../components";
+import {useMediaQuery} from "@mantine/hooks";
 
 interface FeatureItem {
     id: string;
@@ -53,27 +54,81 @@ const featuresData: FeatureItem[] = [
 ];
 
 const CampaignsSection = ({boxProps = {}, titleProps, subtitleProps, features = featuresData}: IProps) => {
+    const isMobile = useMediaQuery('(max-width: 768px)');
+    const isTablet = useMediaQuery('(max-width: 1024px)');
+
     return (
         <Box 
             {...boxProps}
             sx={{
                 backgroundColor: '#f5f5f5',
-                py: 60,
+                py: 40,
+                '@media (max-width: 768px)': {
+                    py: 30
+                }
             }}
         >
-            <Container size="lg" px="xl">
-                <Stack align="center" spacing="xl" mb={60}>
-                    <Title order={1} align="center" sx={{fontSize: 42, fontWeight: 700, color: '#000'}}>
+            <Container size="lg" px={{base: 'md', sm: 'lg', md: 'xl'}}>
+                <Stack align="center" spacing="xl" mb={{base: 40, md: 60}}>
+                    <Title 
+                        order={1} 
+                        align="center" 
+                        sx={{
+                            fontSize: 42,
+                            fontWeight: 700,
+                            color: '#000',
+                            '@media (max-width: 768px)': {
+                                fontSize: 28,
+                            },
+                            '@media (max-width: 480px)': {
+                                fontSize: 24,
+                            }
+                        }}
+                    >
                         Advance Features!
                     </Title>
-                    <Text align="center" sx={{fontSize: 16, color: '#555', maxWidth: 700}}>
+                    <Text 
+                        align="center" 
+                        sx={{
+                            fontSize: 16,
+                            color: '#555',
+                            maxWidth: 700,
+                            lineHeight: 1.6,
+                            '@media (max-width: 768px)': {
+                                fontSize: 14,
+                            }
+                        }}
+                    >
                         He who knows no foreign languages knows nothing of his own and The limits of my language mean the limits of my world
                     </Text>
                 </Stack>
 
-                <Box sx={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 40, '@media (max-width: 768px)': {gridTemplateColumns: '1fr'}}}>
+                <Box 
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: 40,
+                        '@media (max-width: 1024px)': {
+                            gridTemplateColumns: 'repeat(2, 1fr)',
+                            gap: 30
+                        },
+                        '@media (max-width: 768px)': {
+                            gridTemplateColumns: '1fr',
+                            gap: 25
+                        }
+                    }}
+                >
                     {features.map(feature => (
-                        <Box key={feature.id} sx={{display: 'flex', gap: 20}}>
+                        <Box 
+                            key={feature.id} 
+                            sx={{
+                                display: 'flex',
+                                gap: 20,
+                                '@media (max-width: 480px)': {
+                                    gap: 15
+                                }
+                            }}
+                        >
                             <Box
                                 sx={{
                                     width: 55,
@@ -85,16 +140,47 @@ const CampaignsSection = ({boxProps = {}, titleProps, subtitleProps, features = 
                                     justifyContent: 'center',
                                     borderRadius: 6,
                                     fontSize: 28,
-                                    flexShrink: 0
+                                    flexShrink: 0,
+                                    '@media (max-width: 480px)': {
+                                        width: 45,
+                                        height: 45,
+                                        minWidth: 45,
+                                        fontSize: 24
+                                    }
                                 }}
                             >
                                 {feature.icon}
                             </Box>
                             <Box sx={{flex: 1}}>
-                                <Title order={3} sx={{margin: 0, marginBottom: 10, fontSize: 18, fontWeight: 600, color: '#000'}}>
+                                <Title 
+                                    order={3} 
+                                    sx={{
+                                        margin: 0,
+                                        marginBottom: 10,
+                                        fontSize: 18,
+                                        fontWeight: 600,
+                                        color: '#000',
+                                        '@media (max-width: 480px)': {
+                                            fontSize: 16,
+                                            marginBottom: 8
+                                        }
+                                    }}
+                                >
                                     {feature.title}
                                 </Title>
-                                <Text size="sm" sx={{color: '#666', lineHeight: 1.6, marginBottom: 15}}>
+                                <Text 
+                                    size="sm" 
+                                    sx={{
+                                        color: '#666',
+                                        lineHeight: 1.6,
+                                        marginBottom: 15,
+                                        fontSize: 14,
+                                        '@media (max-width: 480px)': {
+                                            fontSize: 13,
+                                            marginBottom: 12
+                                        }
+                                    }}
+                                >
                                     {feature.description}
                                 </Text>
                                 <Button
@@ -111,6 +197,9 @@ const CampaignsSection = ({boxProps = {}, titleProps, subtitleProps, features = 
                                         '&:hover': {
                                             backgroundColor: 'transparent',
                                             color: '#FF8C00'
+                                        },
+                                        '@media (max-width: 480px)': {
+                                            fontSize: 12
                                         }
                                     }}
                                 >

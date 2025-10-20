@@ -4,7 +4,6 @@ import {
     BoxProps,
     Button,
     Flex,
-    Image,
     Progress,
     Stack,
     Text,
@@ -80,12 +79,29 @@ const JoinUsSection = ({boxProps, subtitleProps, titleProps}: IProps) => {
                     </Button>
                 </Stack>
                 <Box mx={matchesMobile ? 0 : 'auto'} style={{flexShrink: 0}}>
-                    <Image
-                        src="https://images.unsplash.com/photo-1617056239820-8ce90ba48193?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        width={matchesMobile ? '100%' : 500}
-                        height={520}
-                        radius="sm"
-                    />
+                    <Box
+                        sx={{
+                            width: matchesMobile ? '100%' : 500,
+                            height: 520,
+                            borderRadius: 8,
+                            overflow: 'hidden',
+                        }}
+                    >
+                        <iframe
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                border: 'none',
+                                borderRadius: 8,
+                            }}
+                            src="https://www.youtube.com/embed/9llLNQ5RoQI?si=Ar0klQ6pGn7h3Fwj"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                        />
+                    </Box>
                 </Box>
             </Flex>
         </Box>
