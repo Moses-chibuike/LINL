@@ -21,22 +21,6 @@ interface IProps {
 const featuresData: FeatureItem[] = [
     {
         id: '1',
-        icon: '🏠',
-        title: 'Find Admissions',
-        description: '@ Language Integration Nigeria Limited we give admissions to every gender both who are ready to learn German',
-        buttonText: 'Enrol Now',
-        buttonLink: '#'
-    },
-    {
-        id: '2',
-        icon: '👍',
-        title: 'Visa Application',
-        description: 'You have all the requirements needed to pursue your next career in Germany but you don\'t have a visa yet? Language Integration Nigeria Limited guides you perfectly on how to follow up your VISA application without any charge. It feels really good to work with us.',
-        buttonText: 'Contact',
-        buttonLink: '#'
-    },
-    {
-        id: '3',
         icon: '👥',
         title: 'Private Tutorial',
         description: 'We consider your social/religious/professional/personal challenges, and we have decided to give you a private session option. The Class is designed to run at your pace and at your time, you choose when your days and your time. T&C applied. Apply now for our Private class, lets make you a special candidate.',
@@ -44,11 +28,27 @@ const featuresData: FeatureItem[] = [
         buttonLink: '#'
     },
     {
-        id: '4',
+        id: '2',
         icon: '📦',
         title: 'Online Classes',
-        description: 'Still, in line with the four modules, Reading, Listening, Writing, and Speaking, Language Integration Nigeria Limited covers helps you solve distance challenges with our online intensive Course. It feels just like you are in a physical class, so long as you have a good internet supply.',
+        description: 'Still, in line with the four modules, Reading, Listening, Writing, and Speaking, Language Integration Nigeria Limited helps you solve distance challenges with our online intensive Course. It feels just like you are in a physical class, so long as you have a good internet supply.',
         buttonText: 'Enrol Now',
+        buttonLink: '#'
+    },
+    {
+        id: '3',
+        icon: '🌍',
+        title: 'Our Languages',
+        description: 'At Language Integration Nigeria Limited we offer comprehensive courses in German, Spanish, French, and Chinese for every gender and anyone ready to learn and master a new language.',
+        buttonText: 'View Courses',
+        buttonLink: '#'
+    },
+    {
+        id: '4',
+        icon: '🎓',
+        title: 'Professional Certification',
+        description: 'Prepare for internationally recognized language certifications including DELE, Goethe-Zertifikat, DELF/DALF, and HSK with our structured exam preparation programs.',
+        buttonText: 'Learn More',
         buttonLink: '#'
     }
 ];

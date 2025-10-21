@@ -3,19 +3,19 @@ import {TitleBadge} from "../../components";
 
 const mockData = [
     {
-        amount: '5',
+        amount: '3',
         label: 'Years Experience',
-        description: 'Language Integration Nigeria Limited is a registered company with about 8+ working experience'
+        description: 'Language Integration Nigeria Limited is a registered company with 3 years of dedicated experience in foreign language education'
     },
     {
         amount: '10',
         label: 'Staff',
-        description: 'We have a team of workforce that are everly ready to handle any task given to them'
+        description: 'We have a team of workforce that are always ready to handle any task given to them'
     },
     {
         amount: '200',
         label: 'Successful stories',
-        description: 'We have trained lots of students and watch them become a better ambassador of Language Integration Nigeria Limited'
+        description: 'We have trained lots of students and watched them become better ambassadors of Language Integration Nigeria Limited'
     }
 ]
 
@@ -58,7 +58,7 @@ const StatsSection = ({boxProps, subtitleProps, titleProps}: IProps) => {
             <Box mb="lg">
                 <TitleBadge title="what we offer"/>
                 <Title {...titleProps}>We have everything you need to know</Title>
-                <Text {...subtitleProps}>Language Integration Nigeria Limited is a Nigerian-based German language and Culture learning center. We promote knowledge of the German language in Nigeria and foster international cultural cooperation.</Text>
+                <Text {...subtitleProps}>Language Integration Nigeria Limited is a Nigerian-based foreign language centre specialized in fostering foreign language learning at the grassroots level.</Text>
             </Box>
             <SimpleGrid
                 cols={3}

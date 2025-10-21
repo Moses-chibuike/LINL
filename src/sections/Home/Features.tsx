@@ -55,7 +55,7 @@ const mockdata = [
         description:
             'Master Spanish with our comprehensive courses covering all proficiency levels. Perfect for travel, business, or DELE certification preparation.',
         action: 'Enrol Now',
-        link: '/courses/spanish'
+        link: '/how-it-works'
     },
     {
         image: 'https://images.unsplash.com/photo-1618259278412-2819cbdea4dc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=821',
@@ -63,7 +63,7 @@ const mockdata = [
         description:
             'Learn German from beginner to advanced levels. Prepare for Goethe-Zertifikat exams and unlock opportunities in German-speaking countries.',
         action: 'Enrol Now',
-        link: '/courses/german'
+        link: '/how-it-works'
     },
     {
         image: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.0.3',
@@ -71,7 +71,7 @@ const mockdata = [
         description:
             'Discover the beauty of French language and culture. From basics to DELF/DALF preparation, we guide you every step of the way.',
         action: 'Enrol Now',
-        link: '/courses/french'
+        link: '/how-it-works'
     },
     {
         image: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870',
@@ -79,7 +79,7 @@ const mockdata = [
         description:
             'Explore the richness of Mandarin Chinese. Master spoken and written language with our structured curriculum designed for all proficiency levels.',
         action: 'Enrol Now',
-        link: '/courses/chinese'
+        link: '/how-it-works'
     },
 ];
 
