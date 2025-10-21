@@ -9,14 +9,8 @@ import {
     Text,
     Title,
     Avatar,
-    Group,
     Stack
 } from "@mantine/core";
-import {
-    IconBrandLinkedin,
-    IconBrandTwitter,
-    IconMail
-} from "@tabler/icons-react";
 import { Helmet } from "react-helmet";
 
 const useStyles = createStyles((theme) => ({
@@ -40,14 +34,6 @@ const useStyles = createStyles((theme) => ({
     avatar: {
         border: `${rem(2)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white}`,
     },
-
-    socialIcon: {
-        color: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[5],
-        '&:hover': {
-            color: theme.colorScheme === 'dark' ? theme.colors.blue[4] : theme.colors.blue[6],
-            cursor: 'pointer'
-        },
-    },
 }));
 
 const DashboardPage = () => {
@@ -64,27 +50,48 @@ const DashboardPage = () => {
             role: 'Founder',
             avatar: '/assets/img/8.png',
             bio: 'Leading our mission to transform lives through purpose and innovation.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'sarah@example.com'
         },
         {
             name: 'Ezechukwu chibuike moses',
             role: 'Co-founder',
             avatar: '/assets/img/9.png',
             bio: 'Driving technological advancement and digital transformation initiatives.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'michael@example.com'
         },
         {
-            name: 'Coming Soon',
-            role: 'Community Manager',
-            avatar: '/api/placeholder/150/150',
-            bio: 'Building and nurturing our vibrant community of supporters and partners.',
-            linkedin: '#',
-            twitter: '#',
-            email: 'emma@example.com'
+            name: 'Chima Ifeyinwa',
+            role: 'Sec/Admin',
+            avatar: '/assets/img/30.jpg',
+            bio: 'Managing administrative operations and ensuring organizational efficiency.',
+        },
+        {
+            name: 'Ibeh Chukwunomso',
+            role: 'German Coordinator',
+            avatar: '/assets/img/31.jpg',
+            bio: 'Coordinating German language programs and cultural exchange initiatives.',
+        },
+        {
+            name: 'Eze Amarachi Vera',
+            role: 'Chinese Coordinator',
+            avatar: '/assets/img/32.jpg',
+            bio: 'Leading Chinese language programs and fostering cross-cultural connections.',
+        },
+        {
+            name: 'Eze Cynthia',
+            role: 'Spanish Coordinator',
+            avatar: '/assets/img/33.jpg',
+            bio: 'Overseeing Spanish language initiatives and Hispanic cultural programs.',
+        },
+        {
+            name: 'Onyedinma Cynthia Eberechi',
+            role: 'German Coordinator',
+            avatar: '/assets/img/34.jpg',
+            bio: 'Supporting German language education and student engagement programs.',
+        },
+        {
+            name: 'Okem Gideon Okem',
+            role: 'French Coordinator',
+            avatar: '/assets/img/35.jpg',
+            bio: 'Coordinating French language programs and francophone cultural activities.',
         }
     ];
 
@@ -120,23 +127,6 @@ const DashboardPage = () => {
                                             <Text size="sm" align="center">
                                                 {member.bio}
                                             </Text>
-                                            <Group spacing="xs">
-                                                <IconBrandLinkedin 
-                                                    size="1.2rem" 
-                                                    className={classes.socialIcon}
-                                                    onClick={() => window.open(member.linkedin, '_blank')}
-                                                />
-                                                <IconBrandTwitter 
-                                                    size="1.2rem" 
-                                                    className={classes.socialIcon}
-                                                    onClick={() => window.open(member.twitter, '_blank')}
-                                                />
-                                                <IconMail 
-                                                    size="1.2rem" 
-                                                    className={classes.socialIcon}
-                                                    onClick={() => window.open(`mailto:${member.email}`)}
-                                                />
-                                            </Group>
                                         </Stack>
                                     </Paper>
                                 </Grid.Col>
