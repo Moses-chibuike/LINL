@@ -194,7 +194,7 @@ const slides = [
         badge: 'Interactive Lessons',
         title: 'Learn by Doing,',
         subtitle: 'Practice Makes Perfect.',
-        description: 'practice conversations with native speakers.',
+        description: 'Practice conversations with native speakers.',
     },
     {
         image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1031&q=80',
@@ -253,23 +253,14 @@ const HeroSlider = () => {
                                     <Title className={classes.title}>
                                         <Text inherit>{slide.title}</Text>
                                         <Text inherit>
-                                            {slide.subtitle.split(' ').slice(0, -2).join(' ')}{' '}
+                                            {slide.subtitle.replace('.', '').split(' ').slice(0, -1).join(' ')}{' '}
                                             <Text
                                                 component="span"
                                                 inherit
                                                 variant="gradient"
                                                 gradient={{ from: '#f2b518', to: '#ffa500' }}
                                             >
-                                                {slide.subtitle.split(' ').slice(-2, -1)[0]}{' '}
-                                            </Text>
-                                            at a{' '}
-                                            <Text
-                                                component="span"
-                                                inherit
-                                                variant="gradient"
-                                                gradient={{ from: '#ffa500', to: '#f2b518' }}
-                                            >
-                                                {slide.subtitle.split(' ').slice(-1)[0]}
+                                                {slide.subtitle.replace('.', '').split(' ').slice(-1)[0]}.
                                             </Text>
                                         </Text>
                                     </Title>
