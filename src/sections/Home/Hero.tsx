@@ -271,10 +271,10 @@ const HeroSlider = () => {
                             </Container>
 
                             <div className={classes.controls}>
-                                <Button className={classes.control} variant="white" size="lg" component={Link} to="/courses">
+                                <Button className={classes.control} variant="white" size="lg" component={Link} to="/how-it-works">
                                     Start Learning
                                 </Button>
-                                <Button className={classes.control} variant="white" size="lg" component={Link} to="/languages">
+                                <Button className={classes.control} variant="white" size="lg" component={Link} to="/how-it-works">
                                     Browse Languages
                                 </Button>
                             </div>
