@@ -92,7 +92,7 @@ const PayPage = (): JSX.Element => {
         const formElement = e.target as HTMLFormElement;
         
         try {
-            const response = await fetch('https://formspree.io/f/meorbozo', {
+            const response = await fetch('https://formspree.io/f/xeorbead', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json'
