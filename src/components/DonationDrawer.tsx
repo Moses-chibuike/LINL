@@ -54,7 +54,7 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
         const formElement = e.target as HTMLFormElement;
         
         try {
-            const response = await fetch('https://formspree.io/f/xgvvpzvk', {
+            const response = await fetch('https://formspree.io/f/xeorbead', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json'
@@ -135,17 +135,17 @@ const DonationDrawer = ({campaign, ...others}: IProps) => {
                             <Stack spacing={isMobile ? "md" : "lg"}>
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                     <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Bank Name</Text>
-                                    <Text weight={500} size={isMobile ? "sm" : "md"}>First Bank of Nigeria</Text>
+                                    <Text weight={500} size={isMobile ? "sm" : "md"}>Zenith Bank</Text>
                                 </Group>
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                     <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Name</Text>
-                                    <Text weight={500} size={isMobile ? "sm" : "md"}>Language Integration Nigeria Limited Foundation</Text>
+                                    <Text weight={500} size={isMobile ? "sm" : "md"}>Aludogbu Samuel Obinna</Text>
                                 </Group>
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>
                                     <Text color="dimmed" size={isMobile ? "xs" : "sm"}>Account Number</Text>
-                                    <Text weight={500} size={isMobile ? "sm" : "md"}>1234567890</Text>
+                                    <Text weight={500} size={isMobile ? "sm" : "md"}>2004538211</Text>
                                 </Group>
                                 <Divider />
                                 <Group position="apart" spacing={isMobile ? "xs" : "md"}>

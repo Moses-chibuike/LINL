@@ -71,7 +71,7 @@ const PaymentConfirmationForm = ({
             data.append('_subject', `New Course Registration - ${courseTitle}`);
             data.append('_captcha', 'false');
 
-            const response = await fetch('https://formspree.io/f/mnngwzzj', {
+            const response = await fetch('https://formspree.io/f/xeorbead', {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -191,33 +191,26 @@ const PaymentConfirmationForm = ({
                                 onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
                             />
 
-                            {/* Bank */}
-                            <TextInput
-                                label="Bank *"
-                                placeholder="Enter your bank name"
-                                required
-                                name="bank"
-                                disabled={state.submitting}
-                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
-                            />
-
-                            {/* Transaction Reference */}
-                            <TextInput
-                                label="Transaction Reference"
-                                placeholder="Enter transaction reference (optional)"
-                                name="transactionReference"
-                                disabled={state.submitting}
-                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
-                            />
-
-                            {/* Session ID */}
-                            <TextInput
-                                label="Session ID"
-                                placeholder="Enter session ID (optional)"
-                                name="sessionId"
-                                disabled={state.submitting}
-                                onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
-                            />
+                            {/* Other Details */}
+                            <Box>
+                                <Text size="sm" weight={500} mb={4}>Other details</Text>
+                                <textarea
+                                    name="otherDetails"
+                                    placeholder="Enter any additional details (optional)"
+                                    disabled={state.submitting}
+                                    onChange={() => state.submitted && setState(s => ({...s, submitted: false}))}
+                                    style={{
+                                        width: '100%',
+                                        minHeight: '100px',
+                                        padding: '10px',
+                                        borderRadius: '4px',
+                                        border: '1px solid #ced4da',
+                                        fontFamily: 'inherit',
+                                        fontSize: '14px',
+                                        resize: 'vertical'
+                                    }}
+                                />
+                            </Box>
                         </Stack>
 
                         {/* Buttons */}
@@ -350,7 +343,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                             })}
                         >
                             {showSuccessView 
-                                ? 'Thank You' 
+                                ? 'Thank You'
                                 : showTransferDetails 
                                     ? 'Payment Details' 
                                     : 'Payment Summary'}
@@ -563,7 +556,7 @@ const PaymentSummaryPage = (): JSX.Element => {
                                             </CopyButton>
                                         </Group>
                                         <Text weight={500} size={isMobile ? "sm" : "md"} sx={{ wordBreak: 'break-word' }}>
-                                            Aludogbu Samuel Obinna
+                                            Aludogbu Samuel Obinna
                                         </Text>
                                     </Box>
                                     <Divider />
