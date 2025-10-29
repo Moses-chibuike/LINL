@@ -71,7 +71,7 @@ const PaymentConfirmationForm = ({
             data.append('_subject', `New Course Registration - ${courseTitle}`);
             data.append('_captcha', 'false');
 
-            const response = await fetch('https://formspree.io/f/xeorbead', {
+            const response = await fetch('https://formspree.io/f/meorbozo', {
                 method: 'POST',
                 body: data,
                 headers: {

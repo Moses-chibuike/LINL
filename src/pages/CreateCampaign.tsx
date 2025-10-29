@@ -54,7 +54,7 @@ const CreateCampaignPage = () => {
         try {
             const form = e.target as HTMLFormElement;
             const data = new FormData(form);
-            const response = await fetch('https://formspree.io/f/xeorbead', {
+            const response = await fetch('https://formspree.io/f/meorbozo', {
                 method: 'POST',
                 body: data,
                 headers: {
@@ -87,7 +87,7 @@ const CreateCampaignPage = () => {
                 <Container my={36}>
                     <Title mb="xl" align="center">Contact Us</Title>
                     
-                    <form onSubmit={handleSubmit} action="https://formspree.io/f/xeorbead" method="POST">
+                    <form onSubmit={handleSubmit} action="https://formspree.io/f/meorbozo" method="POST">
                         <Paper {...paperProps}>
                             <Stack spacing="lg">
                                 <TextInput
